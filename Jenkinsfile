@@ -33,5 +33,13 @@ pipeline {
 				}
 			}
 		}
+
+		stage('Deploy') {
+			steps {
+				script {
+                    sh './gradlew deployHeroku --no-daemon' //run a gradle task
+				}
+			}
+		}
 	}
 }
