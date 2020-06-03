@@ -34,7 +34,11 @@ pipeline {
 			}
 		}
 
-		stage('Deploy') {
+		stage('Deploy') {	
+			environment {
+				HEROKU_API_KEY = credentials('heroku-auth-token')
+			}
+
 			steps {
 				script {
                     sh './gradlew deployHeroku --no-daemon' //run a gradle task
